@@ -10,13 +10,13 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
+    
+    var window: NSWindowController!
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        window = NSStoryboard(name : "MainWindow", bundle: nil).instantiateInitialController() as? NSWindowController
+        window.contentViewController = MainViewController.instantiateFromStoryboard(viewModel: MainViewModel())
+        window.showWindow(self)
     }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-    }
-
-
+    
 }
-
