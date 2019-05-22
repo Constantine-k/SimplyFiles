@@ -15,7 +15,6 @@ protocol MainView: ViewModelView {
 class MainViewModel: ViewModel {
     
     var fileOperations = [FileOperation]()
-    
     var selectedFiles = [File]()
     
     private(set) var addedFiles = [File]() {
@@ -25,8 +24,8 @@ class MainViewModel: ViewModel {
     }
     
     private var activeOperation: FileOperation?
-    
     private var view: MainView? { return baseView as? MainView }
+    private var dispatchingProcessService = DispatchingProcessService()
     
     override init() {
         super.init()
@@ -45,14 +44,12 @@ class MainViewModel: ViewModel {
             file.status = NSLocalizedString("Processing...", comment: "")
             view?.updateTableView()
             
-            activeOperation?.action(file.url) { [weak self] (responseString) in
-                // Delay for demonstration purposes
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            dispatchingProcessService.execute() { [weak self] in
+                self?.activeOperation?.action(file.url) { (responseString) in
                     file.status = responseString
                     
                     self?.view?.updateTableView()
-                })
-            
+                }
             }
         }
     }

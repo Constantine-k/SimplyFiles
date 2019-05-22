@@ -21,6 +21,15 @@
 		B5E0FB932295AABE00CAA451 /* FileOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E0FB922295AABE00CAA451 /* FileOperations.swift */; };
 		B5E0FB952295E4C400CAA451 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E0FB942295E4C400CAA451 /* File.swift */; };
 		B5E0FB9A2295EF1B00CAA451 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E0FB992295EF1B00CAA451 /* Data+Extensions.swift */; };
+		B5E0FBAC22960B8100CAA451 /* FileOperationService.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = B5E0FBA122960B8100CAA451 /* FileOperationService.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B5E0FBB522960BC400CAA451 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E0FBB122960BC300CAA451 /* main.swift */; };
+		B5E0FBB622960BC400CAA451 /* FileOperationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E0FBB222960BC300CAA451 /* FileOperationServiceProtocol.swift */; };
+		B5E0FBB722960BC400CAA451 /* FileOperationServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E0FBB322960BC300CAA451 /* FileOperationServiceDelegate.swift */; };
+		B5E0FBB822960BC400CAA451 /* FileOperationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E0FBB422960BC400CAA451 /* FileOperationService.swift */; };
+		B5E0FBB922960C4F00CAA451 /* FileOperationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E0FBB422960BC400CAA451 /* FileOperationService.swift */; };
+		B5E0FBBA22960C5200CAA451 /* FileOperationServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E0FBB322960BC300CAA451 /* FileOperationServiceDelegate.swift */; };
+		B5E0FBBB22960C5400CAA451 /* FileOperationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E0FBB222960BC300CAA451 /* FileOperationServiceProtocol.swift */; };
+		B5E0FBBD22960F1E00CAA451 /* DispatchingProcessService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E0FBBC22960F1E00CAA451 /* DispatchingProcessService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +40,28 @@
 			remoteGlobalIDString = B5180A972294634B0093E27D;
 			remoteInfo = SimplyFiles;
 		};
+		B5E0FBAA22960B8100CAA451 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5180A902294634B0093E27D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B5E0FBA022960B8100CAA451;
+			remoteInfo = FileOperationService;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B5E0FBB022960B8100CAA451 /* Embed XPC Services */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
+			dstSubfolderSpec = 16;
+			files = (
+				B5E0FBAC22960B8100CAA451 /* FileOperationService.xpc in Embed XPC Services */,
+			);
+			name = "Embed XPC Services";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		B5180A982294634B0093E27D /* SimplyFiles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimplyFiles.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,6 +83,13 @@
 		B5E0FB922295AABE00CAA451 /* FileOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileOperations.swift; sourceTree = "<group>"; };
 		B5E0FB942295E4C400CAA451 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		B5E0FB992295EF1B00CAA451 /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
+		B5E0FBA122960B8100CAA451 /* FileOperationService.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = FileOperationService.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5E0FBA922960B8100CAA451 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5E0FBB122960BC300CAA451 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		B5E0FBB222960BC300CAA451 /* FileOperationServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileOperationServiceProtocol.swift; sourceTree = "<group>"; };
+		B5E0FBB322960BC300CAA451 /* FileOperationServiceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileOperationServiceDelegate.swift; sourceTree = "<group>"; };
+		B5E0FBB422960BC400CAA451 /* FileOperationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileOperationService.swift; sourceTree = "<group>"; };
+		B5E0FBBC22960F1E00CAA451 /* DispatchingProcessService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchingProcessService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +107,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B5E0FB9E22960B8100CAA451 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -78,6 +122,7 @@
 			children = (
 				B5180A9A2294634B0093E27D /* SimplyFiles */,
 				B5180AAD2294634E0093E27D /* SimplyFilesTests */,
+				B5E0FBA222960B8100CAA451 /* FileOperationService */,
 				B5180A992294634B0093E27D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -87,6 +132,7 @@
 			children = (
 				B5180A982294634B0093E27D /* SimplyFiles.app */,
 				B5180AAA2294634E0093E27D /* SimplyFilesTests.xctest */,
+				B5E0FBA122960B8100CAA451 /* FileOperationService.xpc */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				B583B3C6229477B900D0FC60 /* Extensions */,
+				B5E0FBBE22960F2600CAA451 /* Services */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -178,6 +225,26 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		B5E0FBA222960B8100CAA451 /* FileOperationService */ = {
+			isa = PBXGroup;
+			children = (
+				B5E0FBB422960BC400CAA451 /* FileOperationService.swift */,
+				B5E0FBB322960BC300CAA451 /* FileOperationServiceDelegate.swift */,
+				B5E0FBB222960BC300CAA451 /* FileOperationServiceProtocol.swift */,
+				B5E0FBB122960BC300CAA451 /* main.swift */,
+				B5E0FBA922960B8100CAA451 /* Info.plist */,
+			);
+			path = FileOperationService;
+			sourceTree = "<group>";
+		};
+		B5E0FBBE22960F2600CAA451 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B5E0FBBC22960F1E00CAA451 /* DispatchingProcessService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -188,10 +255,12 @@
 				B5180A942294634B0093E27D /* Sources */,
 				B5180A952294634B0093E27D /* Frameworks */,
 				B5180A962294634B0093E27D /* Resources */,
+				B5E0FBB022960B8100CAA451 /* Embed XPC Services */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B5E0FBAB22960B8100CAA451 /* PBXTargetDependency */,
 			);
 			name = SimplyFiles;
 			productName = SimplyFiles;
@@ -216,6 +285,23 @@
 			productReference = B5180AAA2294634E0093E27D /* SimplyFilesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		B5E0FBA022960B8100CAA451 /* FileOperationService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5E0FBAD22960B8100CAA451 /* Build configuration list for PBXNativeTarget "FileOperationService" */;
+			buildPhases = (
+				B5E0FB9D22960B8100CAA451 /* Sources */,
+				B5E0FB9E22960B8100CAA451 /* Frameworks */,
+				B5E0FB9F22960B8100CAA451 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FileOperationService;
+			productName = FileOperationService;
+			productReference = B5E0FBA122960B8100CAA451 /* FileOperationService.xpc */;
+			productType = "com.apple.product-type.xpc-service";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -232,6 +318,10 @@
 					B5180AA92294634E0093E27D = {
 						CreatedOnToolsVersion = 10.2.1;
 						TestTargetID = B5180A972294634B0093E27D;
+					};
+					B5E0FBA022960B8100CAA451 = {
+						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -250,6 +340,7 @@
 			targets = (
 				B5180A972294634B0093E27D /* SimplyFiles */,
 				B5180AA92294634E0093E27D /* SimplyFilesTests */,
+				B5E0FBA022960B8100CAA451 /* FileOperationService */,
 			);
 		};
 /* End PBXProject section */
@@ -272,6 +363,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B5E0FB9F22960B8100CAA451 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -281,12 +379,16 @@
 			files = (
 				B5E0FB8F2295875D00CAA451 /* Application.swift in Sources */,
 				B583B3CE22947F6300D0FC60 /* MainViewModel.swift in Sources */,
+				B5E0FBBD22960F1E00CAA451 /* DispatchingProcessService.swift in Sources */,
+				B5E0FBBA22960C5200CAA451 /* FileOperationServiceDelegate.swift in Sources */,
+				B5E0FBBB22960C5400CAA451 /* FileOperationServiceProtocol.swift in Sources */,
 				B583B3C5229476A700D0FC60 /* ModelViewController.swift in Sources */,
 				B5E0FB932295AABE00CAA451 /* FileOperations.swift in Sources */,
 				B5E0FB8D229583E700CAA451 /* AppDelegate.swift in Sources */,
 				B5180A9E2294634B0093E27D /* MainViewController.swift in Sources */,
 				B583B3C3229474E300D0FC60 /* ViewModel.swift in Sources */,
 				B5E0FB9A2295EF1B00CAA451 /* Data+Extensions.swift in Sources */,
+				B5E0FBB922960C4F00CAA451 /* FileOperationService.swift in Sources */,
 				B5E0FB952295E4C400CAA451 /* File.swift in Sources */,
 				B583B3C92294782E00D0FC60 /* NSViewController+Extensions.swift in Sources */,
 			);
@@ -300,6 +402,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B5E0FB9D22960B8100CAA451 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5E0FBB622960BC400CAA451 /* FileOperationServiceProtocol.swift in Sources */,
+				B5E0FBB522960BC400CAA451 /* main.swift in Sources */,
+				B5E0FBB722960BC400CAA451 /* FileOperationServiceDelegate.swift in Sources */,
+				B5E0FBB822960BC400CAA451 /* FileOperationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -307,6 +420,11 @@
 			isa = PBXTargetDependency;
 			target = B5180A972294634B0093E27D /* SimplyFiles */;
 			targetProxy = B5180AAB2294634E0093E27D /* PBXContainerItemProxy */;
+		};
+		B5E0FBAB22960B8100CAA451 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B5E0FBA022960B8100CAA451 /* FileOperationService */;
+			targetProxy = B5E0FBAA22960B8100CAA451 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -440,6 +558,7 @@
 		B5180AB42294634E0093E27D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "SimplyFiles/Supporting Files/SimplyFiles.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -459,6 +578,7 @@
 		B5180AB52294634E0093E27D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "SimplyFiles/Supporting Files/SimplyFiles.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -517,6 +637,47 @@
 			};
 			name = Release;
 		};
+		B5E0FBAE22960B8100CAA451 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = YV3R4G9QG6;
+				INFOPLIST_FILE = FileOperationService/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.constantine-k.FileOperationService";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B5E0FBAF22960B8100CAA451 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = YV3R4G9QG6;
+				INFOPLIST_FILE = FileOperationService/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.constantine-k.FileOperationService";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -543,6 +704,15 @@
 			buildConfigurations = (
 				B5180AB72294634E0093E27D /* Debug */,
 				B5180AB82294634E0093E27D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5E0FBAD22960B8100CAA451 /* Build configuration list for PBXNativeTarget "FileOperationService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5E0FBAE22960B8100CAA451 /* Debug */,
+				B5E0FBAF22960B8100CAA451 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
