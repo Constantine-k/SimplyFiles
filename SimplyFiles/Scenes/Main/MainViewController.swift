@@ -9,9 +9,14 @@
 import AppKit
 
 class MainViewController: ModelViewController<MainViewModel>, MainView, NSWindowDelegate {
-
+    
+    @IBOutlet private var tableView: NSTableView!
+    @IBOutlet private var operationsPopUpButton: NSPopUpButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setUpOperationsPopUpButton()
     }
     
     override func viewWillAppear() {
@@ -20,10 +25,72 @@ class MainViewController: ModelViewController<MainViewModel>, MainView, NSWindow
         setUpWindow()
     }
     
+    @IBAction func addFiles(_ sender: NSButton) {
+        guard let window = view.window else { return }
+        let panel = NSOpenPanel()
+        panel.allowsMultipleSelection = true
+        
+        panel.beginSheetModal(for: window) { [weak self] (result) in
+            switch result {
+            case .OK:
+                for fileURL in panel.urls {
+                    self?.viewModel.addFileURL(fileURL)
+                    print("ADD FILE:")
+                    print(fileURL)
+                }
+            default:
+                break
+            }
+        }
+    }
+    
+    @IBAction func executeOperation(_ sender: NSButton) {
+        viewModel.executeActiveOperation()
+    }
+    
+    // MARK: - ViewModelView
+    
+    func updateTableView() {
+        tableView.reloadData()
+    }
+    
+    // MARK: - Private
+    
     private func setUpWindow() {
         view.window?.delegate = self
         view.window?.minSize = NSSize(width: 360, height: 200)
     }
+    
+    private func setUpOperationsPopUpButton() {
+        operationsPopUpButton.removeAllItems()
+        operationsPopUpButton.addItems(withTitles: viewModel.fileOperations.map({$0.name}))
+    }
 
+}
+
+// MARK: - TableView DataSource & Delegate
+
+extension MainViewController: NSTableViewDataSource, NSTableViewDelegate {
+    
+    private enum CellIdentifier {
+        static let fileName = NSUserInterfaceItemIdentifier(rawValue: "FileNameCell")
+    }
+    
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return viewModel.addedFileURLs.count
+    }
+    
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        if let cell = tableView.makeView(withIdentifier: CellIdentifier.fileName, owner: nil) as? NSTableCellView {
+            if tableColumn == tableView.tableColumns[0] {
+                cell.textField?.stringValue = String(describing: viewModel.addedFileURLs[row])
+            }
+
+            return cell
+        }
+        
+        return nil
+    }
+    
 }
 
