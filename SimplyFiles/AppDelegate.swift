@@ -14,6 +14,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var window: NSWindowController!
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        setUpWindow()
+    }
+    
+    private func setUpWindow() {
         window = NSStoryboard(name : "MainWindow", bundle: nil).instantiateInitialController() as? NSWindowController
         window.contentViewController = MainViewController.instantiateFromStoryboard(viewModel: MainViewModel())
         window.showWindow(self)
