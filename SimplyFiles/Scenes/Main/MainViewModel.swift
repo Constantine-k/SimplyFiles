@@ -16,7 +16,7 @@ class MainViewModel: ViewModel {
     
     let fileOperations = FileOperations().list
     
-    private(set) var addedFileURLs = [URL]() {
+    private(set) var addedFiles = [File]() {
         didSet {
             view?.updateTableView()
         }
@@ -47,13 +47,13 @@ class MainViewModel: ViewModel {
     }
     
     func executeActiveOperation() {
-        for fileURL in addedFileURLs {
-            activeOperation.action(fileURL)
+        for file in addedFiles {
+            activeOperation.action(file.url)
         }
     }
     
-    func addFileURL(_ fileURL: URL) {
-        addedFileURLs.append(fileURL)
+    func addFile(withURL fileURL: URL) {
+        addedFiles.append(File(url: fileURL))
     }
     
 }

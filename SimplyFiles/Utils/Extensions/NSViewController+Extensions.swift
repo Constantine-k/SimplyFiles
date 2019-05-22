@@ -15,7 +15,7 @@ extension NSViewController {
         let storyboard = NSStoryboard(name: storyboardName, bundle: Bundle.main)
         
         guard let viewController = storyboard.instantiateInitialController() as? T else {
-            Log("Failed to initialize \(type)")
+            print("Failed to initialize \(type)")
             return nil
         }
         

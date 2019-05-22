@@ -34,9 +34,7 @@ class MainViewController: ModelViewController<MainViewModel>, MainView, NSWindow
             switch result {
             case .OK:
                 for fileURL in panel.urls {
-                    self?.viewModel.addFileURL(fileURL)
-                    print("ADD FILE:")
-                    print(fileURL)
+                    self?.viewModel.addFile(withURL: fileURL)
                 }
             default:
                 break
@@ -77,13 +75,13 @@ extension MainViewController: NSTableViewDataSource, NSTableViewDelegate {
     }
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return viewModel.addedFileURLs.count
+        return viewModel.addedFiles.count
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         if let cell = tableView.makeView(withIdentifier: CellIdentifier.fileName, owner: nil) as? NSTableCellView {
             if tableColumn == tableView.tableColumns[0] {
-                cell.textField?.stringValue = String(describing: viewModel.addedFileURLs[row])
+                cell.textField?.stringValue = viewModel.addedFiles[row].name
             }
 
             return cell
