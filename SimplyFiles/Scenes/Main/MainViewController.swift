@@ -46,6 +46,10 @@ class MainViewController: ModelViewController<MainViewModel>, MainView, NSWindow
         viewModel.executeActiveOperation()
     }
     
+    @IBAction func changeActiveOperation(_ sender: NSPopUpButtonCell) {
+        viewModel.setActiveOperation(withIndex: sender.indexOfSelectedItem)
+    }
+    
     // MARK: - ViewModelView
     
     func updateTableView() {
@@ -82,12 +86,22 @@ extension MainViewController: NSTableViewDataSource, NSTableViewDelegate {
         if let cell = tableView.makeView(withIdentifier: CellIdentifier.fileName, owner: nil) as? NSTableCellView {
             if tableColumn == tableView.tableColumns[0] {
                 cell.textField?.stringValue = viewModel.addedFiles[row].name
+            } else if tableColumn == tableView.tableColumns[1] {
+                cell.textField?.stringValue = viewModel.addedFiles[row].status ?? ""
             }
 
             return cell
         }
         
         return nil
+    }
+    
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        viewModel.selectedFiles = []
+        
+        for selectedRow in tableView.selectedRowIndexes {
+            viewModel.selectedFiles.append(viewModel.addedFiles[selectedRow])
+        }
     }
     
 }

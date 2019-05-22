@@ -10,18 +10,30 @@ import Foundation
 
 struct FileOperation {
     var name: String
-    var action: (URL) -> Void
+    var action: (URL, ((String?) -> Void)?) -> Void
 }
 
 class FileOperations {
-    var list = [
-        FileOperation(name: NSLocalizedString("Delete", comment: ""), action: deleteOperationAction),
-        FileOperation(name: NSLocalizedString("Copy", comment: ""), action: deleteOperationAction)
-    ]
-}
-
-// FileOperation functions
-
-fileprivate func deleteOperationAction(fileURL: URL) {
-    print(fileURL)
+    
+    var list: [FileOperation]
+    
+    private let hashOperationAction: (URL, ((String?) -> Void)?) -> Void = { fileURL, completion in
+        guard let fileData = NSData(contentsOfFile: fileURL.path) else {
+            assert(false)
+            completion?(nil)
+            
+            return
+        }
+        
+        let md5 = (fileData as Data).md5
+        
+        completion?(md5)
+    }
+    
+    init() {
+        list = [
+            FileOperation(name: NSLocalizedString("Calculate MD5", comment: ""), action: hashOperationAction)
+        ]
+    }
+    
 }

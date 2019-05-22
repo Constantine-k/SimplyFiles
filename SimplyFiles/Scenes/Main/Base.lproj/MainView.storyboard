@@ -60,7 +60,7 @@
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                                 <tableColumn width="230" minWidth="40" maxWidth="1000" id="eQe-Vf-tTA">
-                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="MD5">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -151,6 +151,9 @@
                                                     <menuItem id="Bay-T7-LzD"/>
                                                 </items>
                                             </menu>
+                                            <connections>
+                                                <action selector="changeActiveOperation:" target="XfG-lQ-9wD" id="eYD-p0-jOb"/>
+                                            </connections>
                                         </popUpButtonCell>
                                     </popUpButton>
                                 </subviews>
