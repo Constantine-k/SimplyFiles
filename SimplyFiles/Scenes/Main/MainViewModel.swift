@@ -44,18 +44,32 @@ class MainViewModel: ViewModel {
             file.status = NSLocalizedString("Processing...", comment: "")
             view?.updateTableView()
             
-            dispatchingProcessService.execute() { [weak self] in
-                self?.activeOperation?.action(file.url) { (responseString) in
-                    file.status = responseString
-                    
-                    self?.view?.updateTableView()
+            if activeOperation?.shouldBeOnMainThread == true {
+                DispatchQueue.main.async { [weak self] in
+                    self?.performActiveOperation(onFile: file)
+                }
+            } else {
+                dispatchingProcessService.execute() { [weak self] in
+                    self?.performActiveOperation(onFile: file)
                 }
             }
         }
     }
     
     func addFile(withURL fileURL: URL) {
-        addedFiles.append(File(url: fileURL))
+        var isFileAlreadyAdded = false
+        
+        for file in addedFiles {
+            if file.url == fileURL {
+                isFileAlreadyAdded = true
+            }
+        }
+        
+        if !isFileAlreadyAdded {
+            addedFiles.append(File(url: fileURL))
+        } else {
+            print("File \(fileURL.path) is already added.")
+        }
     }
     
     // MARK: - Private
@@ -74,13 +88,21 @@ class MainViewModel: ViewModel {
     }
     
     private func setUpFileOperations() {
-        let removeFileOperation = FileOperation(name: NSLocalizedString("Remove", comment: "")) { [weak self] (url, completion) in
+        let removeFileOperation = FileOperation(name: NSLocalizedString("Remove", comment: ""), shouldBeOnMainThread: true) { [weak self] (url, completion) in
             self?.removeFile(withURL: url)
         }
         
         fileOperations = [removeFileOperation] + FileOperations().list
         
         activeOperation = fileOperations[0]
+    }
+    
+    private func performActiveOperation(onFile file: File) {
+        activeOperation?.action(file.url) { [weak self] (responseString) in
+            file.status = responseString
+            
+            self?.view?.updateTableView()
+        }
     }
     
 }

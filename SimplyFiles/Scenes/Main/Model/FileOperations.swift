@@ -11,6 +11,13 @@ import Foundation
 struct FileOperation {
     var name: String
     var action: (URL, ((String?) -> Void)?) -> Void
+    var shouldBeOnMainThread = false
+    
+    init(name: String, shouldBeOnMainThread: Bool = false, action: @escaping (URL, ((String?) -> Void)?) -> Void) {
+        self.name = name
+        self.action = action
+        self.shouldBeOnMainThread = shouldBeOnMainThread
+    }
 }
 
 class FileOperations {
