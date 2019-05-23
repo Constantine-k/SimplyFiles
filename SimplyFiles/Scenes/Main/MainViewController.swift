@@ -83,6 +83,8 @@ extension MainViewController: NSTableViewDataSource, NSTableViewDelegate {
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        guard !viewModel.addedFiles.isEmpty else { return nil }
+        
         if let cell = tableView.makeView(withIdentifier: CellIdentifier.fileName, owner: nil) as? NSTableCellView {
             if tableColumn == tableView.tableColumns[0] {
                 cell.textField?.stringValue = viewModel.addedFiles[row].name

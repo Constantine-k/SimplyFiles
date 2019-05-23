@@ -101,7 +101,9 @@ class MainViewModel: ViewModel {
         activeOperation?.action(file.url) { [weak self] (responseString) in
             file.status = responseString
             
-            self?.view?.updateTableView()
+            DispatchQueue.main.async { [weak self] in
+                self?.view?.updateTableView()
+            }
         }
     }
     
